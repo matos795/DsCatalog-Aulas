@@ -73,6 +73,7 @@ public class ProductService {
         entity.setDate(dto.getDate());
         entity.setImgUrl(dto.getImgUrl());
 
+        entity.getCategories().clear();
         for (CategoryDTO cat : dto.getCategories()) {
             Category c = new Category(cat.getId(), cat.getName());
             entity.getCategories().add(c);
