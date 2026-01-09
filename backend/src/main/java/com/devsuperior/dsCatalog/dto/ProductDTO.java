@@ -3,6 +3,7 @@ package com.devsuperior.dsCatalog.dto;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.devsuperior.dsCatalog.entities.Category;
 import com.devsuperior.dsCatalog.entities.Product;
@@ -41,6 +42,11 @@ public class ProductDTO {
         for (Category cat : entity.getCategories()) {
             categories.add(new CategoryDTO(cat));
         }
+    }
+
+    public ProductDTO(Product entity, Set<Category> categories) {
+        this(entity);
+        categories.forEach(cat -> this.categories.add(new CategoryDTO(cat)));
     }
 
     public Long getId() {
